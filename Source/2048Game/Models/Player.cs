@@ -14,9 +14,27 @@ namespace _2048Game {
         private DateTime lastLogged;
         private bool isLogged;
 
-        public Player(string username, string _password, string _email, int _totalGame, int _totalScore, DateTime _dateCreation, DateTime _lastLogged, bool _isLogged)
+        /// <summary>
+        /// constructor with all the attribute of the class in parameters
+        /// </summary>
+        /// <param name="_userName">string</param>
+        /// <param name="_password">string</param>
+        /// <param name="_email">string</param>
+        /// <param name="_totalGame">int</param>
+        /// <param name="_totalScore">int</param>
+        /// <param name="_dateCreation"">DateTime</param>
+        /// <param name="_lastLogged">DateTime</param>
+        /// <param name="_isLogged">bool</param>
+        public Player(string _userName, string _password, string _email, int _totalGame, int _totalScore, DateTime _dateCreation, DateTime _lastLogged, bool _isLogged)
         {
-
+            this.SetUsername(_userName);
+            this.SetPassword(_password);
+            this.SetEmail(_email);
+            this.SetTotalGame(_totalGame);
+            this.SetTotalScore(_totalScore);
+            this.SetDateCreation(_dateCreation);
+            this.SetLastLogged(_lastLogged);
+            this.SetIsLogged(_isLogged);
         }
 
         /// <summary>
