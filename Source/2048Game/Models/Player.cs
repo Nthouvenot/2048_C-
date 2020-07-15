@@ -38,12 +38,15 @@ namespace _2048Game {
         }
 
         /// <summary>
-        /// getter of the username attribute
+        /// property of the username attribute
         /// </summary>
-        /// <returns>string</returns>
-        public string GetUsername()
+        public string Username 
         {
-            return this.username;
+            get => username;
+            set
+            {
+                this.SetUsername(value);
+            }
         }
 
         /// <summary>
@@ -51,7 +54,7 @@ namespace _2048Game {
         /// accept the paramater if the username contains only letter betwen 4 to 10 characters
         /// </summary>
         /// <param name="_userName"></param>
-        public void SetUsername(string _userName)
+        private void SetUsername(string _userName)
         {
             if(Regex.Match(_userName, "^[a - zA - Z]{ 4, 10 }").Success)
             {
