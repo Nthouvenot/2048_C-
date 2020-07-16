@@ -115,7 +115,7 @@ namespace _2048Game {
         /// <param name="_userName"></param>
         private string IsUsernameValid(string _userName)
         {
-            Regex usernameRegex = new Regex(@"^[a-zA-Z]{4,10}");
+            Regex usernameRegex = new Regex(@"^[a-zA-Z]{4,10}.[0-9]{0,4}");
             if(usernameRegex.IsMatch(_userName))
             {
                 return _userName;
@@ -130,7 +130,7 @@ namespace _2048Game {
         private string IsPasswordValid(string _password)
         {
             //@"^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,32})"
-            Regex passwordRegex = new Regex(@"^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,32})");
+            Regex passwordRegex = new Regex(@"^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
             if (passwordRegex.IsMatch(_password))
             {
                 return _password;
