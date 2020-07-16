@@ -32,9 +32,9 @@ namespace _2048Game {
             this.SetEmail(_email);
             this.SetTotalGame(_totalGame);
             this.SetTotalScore(_totalScore);
-            this.SetDateCreation(_dateCreation);
-            this.SetLastLogged(_lastLogged);
-            this.SetIsLogged(_isLogged);
+            this.dateCreation = _dateCreation;
+            this.lastLogged = _lastLogged;
+            this.isLogged = _isLogged;
         }
 
         /// <summary>
@@ -47,6 +47,81 @@ namespace _2048Game {
             {
                 this.SetUsername(value);
             }
+        }
+
+        /// <summary>
+        /// property of the password attribute
+        /// </summary>
+        public string Password 
+        { 
+            get => password;
+            set
+            {
+                this.SetPassword(value);
+            }
+        }
+
+        /// <summary>
+        /// property of the email attribute
+        /// </summary>
+        public string Email 
+        {
+            get => email;
+            set
+            {
+                this.SetEmail(value);
+            }
+        }
+
+        /// <summary>
+        /// property of the totalGame attribute
+        /// </summary>
+        public int TotalGame
+        { 
+            get => totalGame; 
+            set
+            {
+                this.SetTotalGame(value);
+            } 
+        }
+
+        /// <summary>
+        /// property of the totalScore attribute
+        /// </summary>
+        public int TotalScore 
+        {
+            get => totalScore;
+            set 
+            {
+                this.SetTotalScore(value);
+            }
+        }
+
+        /// <summary>
+        /// property of the dateCreation attribute
+        /// </summary>
+        public DateTime DateCreation 
+        {
+            get => dateCreation; 
+            set => dateCreation = value;
+        }
+
+        /// <summary>
+        /// property of the lasLogged attribute
+        /// </summary>
+        public DateTime LastLogged 
+        { 
+            get => lastLogged; 
+            set => lastLogged = value;
+        }
+
+        /// <summary>
+        /// property of the isLogged attribute
+        /// </summary>
+        public bool IsLogged1 
+        { 
+            get => isLogged; 
+            set => isLogged = value; 
         }
 
         /// <summary>
@@ -63,20 +138,11 @@ namespace _2048Game {
         }
 
         /// <summary>
-        /// getter of the password attribute
-        /// </summary>
-        /// <returns>string</returns>
-        public string GetPassword()
-        {
-            return this.password;
-        }
-
-        /// <summary>
         /// setter of the password attribute
         /// accept the parameter if he contains minimum 8 characters and respect the rules of password
         /// </summary>
         /// <param name="_password"></param>
-        public void SetPassword(string _password)
+        private void SetPassword(string _password)
         {
             if(Regex.Match(_password, "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})").Success)
             {
@@ -84,19 +150,11 @@ namespace _2048Game {
             }
         }
 
-        /// getter of the email attribute
-        /// </summary>
-        /// <returns>string</returns>
-        public string GetEmail()
-        {
-            return this.email;
-        }
-
         /// <summary>
         /// setter of the email atribute
         /// </summary>
         /// <param name="_email"></param>
-        public void SetEmail(string _email)
+        private void SetEmail(string _email)
         {
             if (Regex.Match(_email, "^[a-z0-9._-]+@[a-z0-9._-]+.[a-z]{2,6}$").Success)
             {
@@ -105,96 +163,25 @@ namespace _2048Game {
         }
 
         /// <summary>
-        /// getter of the totalGame attribute
-        /// </summary>
-        /// <returns>int</returns>
-        public int GetTotalGame()
-        {
-            return this.totalGame;
-        }
-
-        /// <summary>
         /// setter of the totalGame attribute
         /// </summary>
         /// <param name="_totalGame"></param>
-        public void SetTotalGame(int _totalGame)
+        private void SetTotalGame(int _totalGame)
         {
             //ToDo test the range of the parameter or what else ?
             this.totalGame = _totalGame;
         }
 
         /// <summary>
-        /// getter of the totalScore attribute
-        /// </summary>
-        /// <returns>int</returns>
-        public int GetTotalScore()
-        {
-            return this.totalScore;
-        }
-
-        /// <summary>
         /// setter of the totalScore attribute
         /// </summary>
         /// <param name="_totalScore"></param>
-        public void SetTotalScore(int _totalScore)
+        private void SetTotalScore(int _totalScore)
         {
             //ToDo test the range of the parameter or what else ?
             this.totalScore = _totalScore;
         }
 
-        /// <summary>
-        /// getter of the dateCreation attribute
-        /// </summary>
-        /// <returns>DateTime</returns>
-        public DateTime GetDateCreation()
-        {
-            return this.dateCreation;
-        }
-
-        /// <summary>
-        /// setter of the dateCreation attribute
-        /// </summary>
-        /// <param name="_dateCreation"></param>
-        public void SetDateCreation(DateTime _dateCreation)
-        {
-            this.dateCreation = _dateCreation;
-        }
-
-        /// <summary>
-        /// getter of the lastLogged attribute
-        /// </summary>
-        /// <returns></returns>
-        public DateTime GetLastLogged()
-        {
-            return this.lastLogged;
-        }
-
-        /// <summary>
-        /// setter of the lastLogged attribute
-        /// </summary>
-        /// <param name="_lastLogged"></param>
-        public void SetLastLogged(DateTime _lastLogged)
-        {
-            this.lastLogged = _lastLogged;
-        }
-
-        /// <summary>
-        /// return true if the player is logged
-        /// </summary>
-        /// <returns>bool</returns>
-        public bool IsLogged()
-        {
-            return this.isLogged;
-        }
-
-        /// <summary>
-        /// setter of the islogged attribute
-        /// </summary>
-        /// <param name="_isLogged"></param>
-        public void SetIsLogged(bool _isLogged)
-        {
-            this.isLogged = _isLogged;
-        }
     }
 
 }
