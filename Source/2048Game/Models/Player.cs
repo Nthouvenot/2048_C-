@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace _2048Game {
 
-    class Player
+    public class Player
     {
         private string username;
         private string password;
@@ -27,11 +27,11 @@ namespace _2048Game {
         /// <param name="_isLogged">bool</param>
         public Player(string _userName, string _password, string _email, int _totalGame, int _totalScore, DateTime _dateCreation, DateTime _lastLogged, bool _isLogged)
         {
-            this.SetUsername(_userName);
-            this.SetPassword(_password);
-            this.SetEmail(_email);
-            this.SetTotalGame(_totalGame);
-            this.SetTotalScore(_totalScore);
+            this.username = this.IsUsernameValid(_userName);
+            this.password = this.IsPasswordValid(_password);
+            this.email = _email;
+            this.totalGame = _totalGame;
+            this.totalScore = _totalScore;
             this.dateCreation = _dateCreation;
             this.lastLogged = _lastLogged;
             this.isLogged = _isLogged;
@@ -41,12 +41,9 @@ namespace _2048Game {
         /// property of the username attribute
         /// </summary>
         public string Username 
-        {
-            get => username;
-            set
-            {
-                this.SetUsername(value);
-            }
+        { 
+            get => this.username;
+            set => this.username = this.IsUsernameValid(value);
         }
 
         /// <summary>
@@ -55,10 +52,7 @@ namespace _2048Game {
         public string Password 
         { 
             get => password;
-            set
-            {
-                this.SetPassword(value);
-            }
+            set => this.password = this.IsPasswordValid(value);
         }
 
         /// <summary>
@@ -67,10 +61,7 @@ namespace _2048Game {
         public string Email 
         {
             get => email;
-            set
-            {
-                this.SetEmail(value);
-            }
+            set => this.email = this.IsEmailValid(value);
         }
 
         /// <summary>
@@ -78,11 +69,8 @@ namespace _2048Game {
         /// </summary>
         public int TotalGame
         { 
-            get => totalGame; 
-            set
-            {
-                this.SetTotalGame(value);
-            } 
+            get => this.totalGame;
+            set => this.totalGame = value;
         }
 
         /// <summary>
@@ -90,11 +78,8 @@ namespace _2048Game {
         /// </summary>
         public int TotalScore 
         {
-            get => totalScore;
-            set 
-            {
-                this.SetTotalScore(value);
-            }
+            get => this.totalScore;
+            set => this.totalScore = value;
         }
 
         /// <summary>
@@ -125,61 +110,46 @@ namespace _2048Game {
         }
 
         /// <summary>
-        /// setter of the userName attribute
         /// accept the paramater if the username contains only letter betwen 4 to 10 characters
         /// </summary>
         /// <param name="_userName"></param>
-        private void SetUsername(string _userName)
+        private string IsUsernameValid(string _userName)
         {
-            if(Regex.Match(_userName, "^[a - zA - Z]{ 4, 10 }").Success)
+            Regex usernameRegex = new Regex(@"^[a-zA-Z]{4,10}");
+            if(usernameRegex.IsMatch(_userName))
             {
-                this.username = _userName;
+                return _userName;
             }
+            return " ";
         }
 
         /// <summary>
-        /// setter of the password attribute
         /// accept the parameter if he contains minimum 8 characters and respect the rules of password
         /// </summary>
         /// <param name="_password"></param>
-        private void SetPassword(string _password)
+        private string IsPasswordValid(string _password)
         {
-            if(Regex.Match(_password, "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})").Success)
+            //@"^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,32})"
+            Regex passwordRegex = new Regex(@"^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,32})");
+            if (passwordRegex.IsMatch(_password))
             {
-                this.password = _password;
+                return _password;
             }
+            return " ";
         }
 
         /// <summary>
-        /// setter of the email atribute
+        /// accept the parameter if he is formated in email format
         /// </summary>
         /// <param name="_email"></param>
-        private void SetEmail(string _email)
+        private string IsEmailValid(string _email)
         {
-            if (Regex.Match(_email, "^[a-z0-9._-]+@[a-z0-9._-]+.[a-z]{2,6}$").Success)
+            Regex emailRegex = new Regex(@"^[a-z0-9._-]+@[a-z0-9._-]+.[a-z]{2,6}$");
+            if (emailRegex.IsMatch(_email))
             {
-                this.email = _email;
+                return _email;
             }
-        }
-
-        /// <summary>
-        /// setter of the totalGame attribute
-        /// </summary>
-        /// <param name="_totalGame"></param>
-        private void SetTotalGame(int _totalGame)
-        {
-            //ToDo test the range of the parameter or what else ?
-            this.totalGame = _totalGame;
-        }
-
-        /// <summary>
-        /// setter of the totalScore attribute
-        /// </summary>
-        /// <param name="_totalScore"></param>
-        private void SetTotalScore(int _totalScore)
-        {
-            //ToDo test the range of the parameter or what else ?
-            this.totalScore = _totalScore;
+            return " ";
         }
 
     }
