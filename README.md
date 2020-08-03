@@ -1,8 +1,6 @@
 # 2048_CS
 
-Implémentation C# du jeu 2048 conçu en mars 2014 par Gabriele Cirulli et publié le 9 mars 2014.
+C# implementation of the 2048 game, designed in march 2014 by Gabriele Cirulli and published the 9 march 2014.
 
-## But du jeu
-Le but du jeu est de faire glisser des tuiles sur une grille, pour combiner les tuiles de mêmes valeurs et créer ainsi
-une tuile portant le nombre 2048. Le joueur peut toutefois continuer à jouer après cet objectif atteint pour faire le
-meilleur score possible.
+## objective of the game
+The objective of the game is to drag tiles on a grid to combine tiles of the same value, thus creating a tile with the number 2048. The player can, however, continue to play after the objective has been reached to get the maximum possible score.
