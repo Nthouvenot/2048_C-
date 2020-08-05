@@ -35,11 +35,25 @@ namespace _2048GameTest
             player1.Username = "GameMaster";
             StringAssert.Contains(player1.Username, "GameMaster");
             StringAssert.Contains(player2.Username, "Gamer2048");
+            // test Username in lowercase
+            player1.Username = "gamer";
+            StringAssert.Contains(player1.Username, "gamer");
+            //test username in lowercase + number at the end
+            player1.Username = "gamer2048";
+            StringAssert.Contains(player1.Username, "gamer2048");
+            //test bad Username
+            player1.Username = "2048";
+            StringAssert.Contains(player1.Username, " ");
+            player1.Username = "#toto";
+            StringAssert.Contains(player1.Username, " ");
+            player1.Username = "toto?";
+            StringAssert.Contains(player1.Username, " ");
         }
 
         /// <summary>
         /// we check if we have the waited result in player1.email
         /// </summary>
+        [Test]
         public void EmailRegexTest()
         {
             player1.Email = "gamemaster@gmail.com";
@@ -52,6 +66,7 @@ namespace _2048GameTest
         /// <summary>
         /// we check if we have the waited result in player1.password
         /// </summary>
+        [Test]
         public void PasswordRegexTest()
         {
             StringAssert.Contains(player1.Password, "5j87p2n5k@");
